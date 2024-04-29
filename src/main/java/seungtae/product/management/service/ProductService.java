@@ -7,6 +7,9 @@ import seungtae.product.management.entity.Product;
 import seungtae.product.management.dto.ProductDto;
 import seungtae.product.management.repository.ListProductRepository;
 
+import java.util.List;
+import java.util.stream.Stream;
+
 @Service
 public class ProductService {
 
@@ -34,4 +37,25 @@ public class ProductService {
         return savedProductDto;
     }
 
+    public ProductDto findById(Long id) {
+        Product product = listProductRepository.findById(id);
+        ProductDto productDto = modelMapper.map(product, ProductDto.class);
+        return productDto;
+    }
+
+    public List<ProductDto> findALl() {
+        List<Product> products = listProductRepository.findAll();
+        List<ProductDto> productDtos = products.stream()
+                .map(product -> modelMapper.map(product, ProductDto.class))
+                .toList();
+        return productDtos;
+    }
+
+    public List<ProductDto> findByNameContaining(String name) {
+        List<Product> products = listProductRepository.findByNameContaining(name);
+        List<ProductDto> productDtos = products.stream()
+                .map(product -> modelMapper.map(product, ProductDto.class))
+                .toList();
+        return productDtos;
+    }
 }

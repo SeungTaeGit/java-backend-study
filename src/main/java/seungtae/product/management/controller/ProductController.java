@@ -1,12 +1,11 @@
 package seungtae.product.management.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import seungtae.product.management.dto.ProductDto;
 import seungtae.product.management.service.ProductService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("")
@@ -25,5 +24,21 @@ public class ProductController {
 
         return productService.add(productDto);
     }
+
+    @GetMapping("/products/{id}")
+    public ProductDto findProductById(@PathVariable Long id) {
+        return productService.findById(id);
+    }
+
+    @GetMapping("/products")
+    public List<ProductDto> findAllProduct(
+            @RequestParam(required = false) String name
+    ) {
+        if (name == null) {
+            return productService.findALl();
+        }
+        return productService.findByNameContaining(name);
+    }
+
 
 }
