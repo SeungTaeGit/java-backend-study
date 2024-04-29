@@ -23,4 +23,8 @@ public class ProductDto {
     public Integer getQuantity() {
         return quantity;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
