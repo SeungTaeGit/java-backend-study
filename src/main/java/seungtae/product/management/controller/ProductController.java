@@ -40,5 +40,12 @@ public class ProductController {
         return productService.findByNameContaining(name);
     }
 
-
+    @PutMapping("/products/{id}")
+    public ProductDto updateProdcut(
+            @PathVariable Long id,
+            @RequestBody ProductDto productDto
+    ) {
+        productDto.setId(id);
+        return productService.update(productDto);
+    }
 }
