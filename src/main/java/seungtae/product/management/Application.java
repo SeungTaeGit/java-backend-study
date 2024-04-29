@@ -1,7 +1,10 @@
 package seungtae.product.management;
 
+import org.modelmapper.ModelMapper;
+import org.modelmapper.config.Configuration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class Application {
@@ -10,4 +13,13 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
+	// ModelMapper 인스턴스 생성 및 빈 등록
+	@Bean
+	public ModelMapper modelMapper() {
+		ModelMapper modelMapper = new ModelMapper();
+		modelMapper.getConfiguration()
+				.setFieldAccessLevel(Configuration.AccessLevel.PRIVATE)
+				.setFieldMatchingEnabled(true);
+		return modelMapper;
+	}
 }
