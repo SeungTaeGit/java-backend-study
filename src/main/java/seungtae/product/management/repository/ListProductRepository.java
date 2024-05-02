@@ -2,6 +2,7 @@ package seungtae.product.management.repository;
 
 import org.springframework.stereotype.Repository;
 import seungtae.product.management.entity.Product;
+import seungtae.product.management.exception.EntityNotFoundException;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -24,7 +25,7 @@ public class ListProductRepository {
         return products.stream()
                 .filter(product -> product.sameId(id))
                 .findFirst()    // 첫 번째 Optional 객체 반환
-                .orElseThrow(); // Optional 객체가 비어 있으면 'NoSuchElementException' 예외, 있으면 Product 반환.
+                .orElseThrow(() -> new EntityNotFoundException("Product를 찾지 못했습니다.")); // Optional 객체가 비어 있으면 'NoSuchElementException' 예외, 있으면 Product 반환.
     }
 
     public List<Product> findAll() {
