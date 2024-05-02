@@ -1,10 +1,18 @@
 package seungtae.product.management.dto;
 
+import jakarta.validation.constraints.NotNull;
+
 public class ProductDto {
 
     private Long id;            // 고유 인덱스
+
+    @NotNull
     private String name;        // 상품 이름
+
+    @NotNull
     private Integer price;      // 상품 가격
+
+    @NotNull
     private Integer quantity;   // 상품 갯수
 
     // 추후 Lombok의 'Getter' 이노테이션으로 대체
