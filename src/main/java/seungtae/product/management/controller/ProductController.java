@@ -1,5 +1,6 @@
 package seungtae.product.management.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import seungtae.product.management.dto.ProductDto;
@@ -20,7 +21,7 @@ public class ProductController {
     }
 
     @PostMapping("/products")
-    public ProductDto createProduct(@RequestBody ProductDto productDto) {
+    public ProductDto createProduct(@Valid @RequestBody ProductDto productDto) {
 
         return productService.add(productDto);
     }
