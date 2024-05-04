@@ -42,4 +42,16 @@ public class Product {
         Product product = (Product) o;
         return Objects.equals(id, product.id);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
 }
