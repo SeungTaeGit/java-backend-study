@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import seungtae.product.management.entity.Product;
 import seungtae.product.management.dto.ProductDto;
+import seungtae.product.management.repository.DatabaseProductRepository;
 import seungtae.product.management.repository.ListProductRepository;
 
 import java.util.List;
@@ -14,13 +15,17 @@ import java.util.stream.Stream;
 public class ProductService {
 
     private ListProductRepository listProductRepository;
+    private DatabaseProductRepository databaseProductRepository;
     private ModelMapper modelMapper;
     private ValidationService validationService;
 
     @Autowired
-    ProductService(ListProductRepository listProductRepository, ModelMapper modelMapper,
+    ProductService(ListProductRepository listProductRepository,
+                   DatabaseProductRepository databaseProductRepository,
+                   ModelMapper modelMapper,
                    ValidationService validationService) {
         this.listProductRepository = listProductRepository;
+        this.databaseProductRepository = databaseProductRepository;
         this.modelMapper = modelMapper;
         this.validationService = validationService;
     }
@@ -32,7 +37,7 @@ public class ProductService {
         validationService.checkValid(product);
 
         // 레포지토리 호출
-        Product savedProduct = listProductRepository.add(product);
+        Product savedProduct = databaseProductRepository.add(product);
 
         // Entity -> Dto
         ProductDto savedProductDto = modelMapper.map(savedProduct, ProductDto.class);
@@ -42,13 +47,13 @@ public class ProductService {
     }
 
     public ProductDto findById(Long id) {
-        Product product = listProductRepository.findById(id);
+        Product product = listProductRepository.findById(id);   //
         ProductDto productDto = modelMapper.map(product, ProductDto.class);
         return productDto;
     }
 
     public List<ProductDto> findALl() {
-        List<Product> products = listProductRepository.findAll();
+        List<Product> products = listProductRepository.findAll();   //
         List<ProductDto> productDtos = products.stream()
                 .map(product -> modelMapper.map(product, ProductDto.class))
                 .toList();
@@ -56,7 +61,7 @@ public class ProductService {
     }
 
     public List<ProductDto> findByNameContaining(String name) {
-        List<Product> products = listProductRepository.findByNameContaining(name);
+        List<Product> products = databaseProductRepository.findByNameContaining(name);
         List<ProductDto> productDtos = products.stream()
                 .map(product -> modelMapper.map(product, ProductDto.class))
                 .toList();
@@ -65,12 +70,12 @@ public class ProductService {
 
     public ProductDto update(ProductDto productDto) {
         Product product = modelMapper.map(productDto, Product.class);
-        Product updatedProduct = listProductRepository.update(product);
+        Product updatedProduct = databaseProductRepository.update(product);
         ProductDto updatedProductDto = modelMapper.map(updatedProduct, ProductDto.class);
         return updatedProductDto;
     }
 
     public void delete(Long id) {
-        listProductRepository.delete(id);
+        databaseProductRepository.delete(id);
     }
 }
