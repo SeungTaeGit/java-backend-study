@@ -10,10 +10,6 @@ import java.util.Objects;
 //@Getter
 public class Product {
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     private Long id;            // 고유 인덱스
 
     @Size(min = 1, max = 100)
@@ -43,6 +39,10 @@ public class Product {
         return Objects.equals(id, product.id);
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -53,5 +53,21 @@ public class Product {
 
     public Integer getQuantity() {
         return quantity;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }
