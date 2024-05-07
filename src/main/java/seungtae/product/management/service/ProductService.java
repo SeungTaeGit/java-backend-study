@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 @Service
 public class ProductService {
 
-    private ListProductRepository listProductRepository;
+//    private ListProductRepository listProductRepository;
     private DatabaseProductRepository databaseProductRepository;
     private ModelMapper modelMapper;
     private ValidationService validationService;
@@ -24,7 +24,7 @@ public class ProductService {
                    DatabaseProductRepository databaseProductRepository,
                    ModelMapper modelMapper,
                    ValidationService validationService) {
-        this.listProductRepository = listProductRepository;
+//        this.listProductRepository = listProductRepository;
         this.databaseProductRepository = databaseProductRepository;
         this.modelMapper = modelMapper;
         this.validationService = validationService;
@@ -47,13 +47,13 @@ public class ProductService {
     }
 
     public ProductDto findById(Long id) {
-        Product product = listProductRepository.findById(id);   //
+        Product product = databaseProductRepository.findById(id);   //
         ProductDto productDto = modelMapper.map(product, ProductDto.class);
         return productDto;
     }
 
     public List<ProductDto> findALl() {
-        List<Product> products = listProductRepository.findAll();   //
+        List<Product> products = databaseProductRepository.findAll();   //
         List<ProductDto> productDtos = products.stream()
                 .map(product -> modelMapper.map(product, ProductDto.class))
                 .toList();
