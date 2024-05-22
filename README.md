@@ -25,6 +25,8 @@
 <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=white">  <!-- Spring -->
 <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">  <!-- Spring boot -->
 <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">   <!-- MySQL -->
+<br>
+<br>
 
 
 ### 사용 설명서
@@ -37,10 +39,10 @@
   **사용자** : `상품 CREATE`, `상품 READ`, `상품 UPDATE`, `상품 DELETE` <br>
   #### 참고 자료
 <br>
+<br>
 
 
-### 클래스 구조
+### 디렉토리 구조
 ---
-#### Java Class
 
 <br>
