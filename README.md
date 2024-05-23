@@ -2,7 +2,7 @@
 > CRUD, MySQL 기초 학습 프로젝트
 
 - Spring CRUD 기능 개발을 위한 초석 개인 프로젝트입니다.
-- Back-end API 개발 및 JDBC Template을 이용한 MySQL 연동.
+- Back-end API 개발 및 `JDBC Template`을 이용한 `MySQL`과의 연동.
 <br>
 <br>
 
