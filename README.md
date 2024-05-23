@@ -3,8 +3,8 @@
 
 - Spring CRUD 기능 개발을 위한 초석 개인 프로젝트입니다.
 - Back-end API 개발 및 `JDBC Template`을 이용한 `MySQL`과의 연동.
-<br>
-<br>
+- `Dto`와 `Entity`의 분리 개발 및 학습, 유효성 검사 개발.
+- 기본적인 상품 `CRUD` 기능을 주요 기능으로 보유하고 있습니다.
 
 
 #### 개발 기간
@@ -44,5 +44,81 @@
 
 ### 디렉토리 구조
 ---
-
+```bash
+├─.gradle
+│  ├─8.7
+│  │  ├─checksums
+│  │  ├─dependencies-accessors
+│  │  ├─executionHistory
+│  │  ├─expanded
+│  │  ├─fileChanges
+│  │  ├─fileHashes
+│  │  └─vcsMetadata
+│  ├─buildOutputCleanup
+│  └─vcs-1
+├─.idea
+├─build
+│  ├─classes
+│  │  └─java
+│  │      └─main
+│  │          └─seungtae
+│  │              └─product
+│  │                  └─management
+│  │                      ├─controller
+│  │                      ├─dto
+│  │                      ├─entity
+│  │                      ├─exception
+│  │                      ├─repository
+│  │                      └─service
+│  ├─generated
+│  │  └─sources
+│  │      ├─annotationProcessor
+│  │      │  └─java
+│  │      │      └─main
+│  │      └─headers
+│  │          └─java
+│  │              └─main
+│  ├─resources
+│  │  └─main
+│  │      ├─static
+│  │      └─templates
+│  └─tmp
+│      └─compileJava
+│          └─compileTransaction
+│              ├─backup-dir
+│              └─stash-dir
+├─gradle
+│  └─wrapper
+└─src
+    ├─main
+    │  ├─java
+    │  │  └─seungtae
+    │  │      └─product
+    │  │          └─management
+    │  │              ├─controller
+    │  │                  └─ProductController
+    │  │              ├─dto
+    │  │                  └─ProductDto
+    │  │              ├─entity
+    │  │                  └─Product
+    │  │              ├─exception
+    │  │                  ├─EntityNotFoundException
+    │  │                  ├─ErrorMessage
+    │  │                  └─ClobalExceptionHandler
+    │  │              ├─repository
+    │  │                  ├─DatabaseProductRepository
+    │  │                  └─ListProductRepository
+    │  │              ├─service
+    │  │                  ├─ProductService
+    │  │                  └─ValidationService
+    │  │              └─Application        // Main Thread
+    │  └─resources
+    │      ├─static
+    │      └─templates
+    └─test
+        └─java
+            └─seungtae
+                └─product
+                    └─management
+```
 <br>
